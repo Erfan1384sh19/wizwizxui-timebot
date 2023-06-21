@@ -1511,7 +1511,7 @@ function deleteClient($server_id, $inbound_id, $remark, $delete = 0){
         $phost = str_ireplace('https://','',str_ireplace('http://','',$panel_url));
         if($serverType == "sanaei" || $serverType == "alireza"){
             if($serverType == "sanaei") $url = "$panel_url/panel/inbound/" . $inbound_id . "/delClient/" . urlencode($uuid);
-            elseif($serverType == "alireza") $url = "$panel_url/xui/inbound/" . $inbound_id . "/delClient/" . urlencode($uuid);
+            elseif($serverType == "alireza") $url = "$panel_url/panel/inbound/" . $inbound_id . "/delClient/" . urlencode($uuid);
 
             curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,
@@ -1530,7 +1530,7 @@ function deleteClient($server_id, $inbound_id, $remark, $delete = 0){
             ));
         }else{
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "$panel_url/xui/inbound/update/$inbound_id",
+                CURLOPT_URL => "$panel_url/panel/inbound/update/$inbound_id",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -1623,7 +1623,7 @@ function editInboundTraffic($server_id, $remark, $volume, $days){
     }
 
     if($serverType == "sanaei") $url = "$panel_url/panel/inbound/update/$inbound_id";
-    else $url = "$panel_url/xui/inbound/update/$inbound_id";
+    else $url = "$panel_url/panel/inbound/update/$inbound_id";
 
     $phost = str_ireplace('https://','',str_ireplace('http://','',$panel_url));
     curl_setopt_array($curl, array(
@@ -1747,7 +1747,7 @@ function editClientTraffic($server_id, $inbound_id, $remark, $volume, $days){
             );
             
         if($serverType == "sanaei") $url = "$panel_url/panel/inbound/updateClient/" . urlencode($uuid);
-        else $url = "$panel_url/xui/inbound/updateClient/" . urlencode($uuid);
+        else $url = "$panel_url/panel/inbound/updateClient/" . urlencode($uuid);
         
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -1766,7 +1766,7 @@ function editClientTraffic($server_id, $inbound_id, $remark, $volume, $days){
         ));
     }else{
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "$panel_url/xui/inbound/update/$inbound_id",
+            CURLOPT_URL => "$panel_url/panel/inbound/update/$inbound_id",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -1849,7 +1849,7 @@ function deleteInbound($server_id, $remark, $delete = 0){
         }
         
         if($serverType == "sanaei") $url = "$panel_url/panel/inbound/del/$inbound_id";
-        else $url = "$panel_url/xui/inbound/del/$inbound_id";
+        else $url = "$panel_url/panel/inbound/del/$inbound_id";
        
         $phost = str_ireplace('https://','',str_ireplace('http://','',$panel_url));
         curl_setopt_array($curl, array(
@@ -1912,8 +1912,8 @@ function resetClientTraffic($server_id, $remark, $inboundId = null){
     $phost = str_ireplace('https://','',str_ireplace('http://','',$panel_url));
 
     if($serverType == "sanaei") $url = "$panel_url/panel/inbound/$inboundId/resetClientTraffic/" . urlencode($remark);
-    elseif($inboundId == null) $url = "$panel_url/xui/inbound/resetClientTraffic/" . urlencode($remark);
-    else $url = "$panel_url/xui/inbound/$inboundId/resetClientTraffic/" . urlencode($remark);
+    elseif($inboundId == null) $url = "$panel_url/panel/inbound/resetClientTraffic/" . urlencode($remark);
+    else $url = "$panel_url/panel/inbound/$inboundId/resetClientTraffic/" . urlencode($remark);
     
     curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
@@ -2049,7 +2049,7 @@ function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $re
             );
             
         if($serverType == "sanaei") $url = "$panel_url/panel/inbound/addClient/";
-        else $url = "$panel_url/xui/inbound/addClient/";
+        else $url = "$panel_url/panel/inbound/addClient/";
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -2068,7 +2068,7 @@ function addInboundAccount($server_id, $client_id, $inbound_id, $expiryTime, $re
         ));
     }else{
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "$panel_url/xui/inbound/update/$iid",
+            CURLOPT_URL => "$panel_url/panel/inbound/update/$iid",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -2893,7 +2893,7 @@ function editInbound($server_id, $uniqid, $remark, $protocol, $netType = 'tcp', 
     }
     
     if($serverType == "sanaei") $url = "$panel_url/panel/inbound/update/$iid";
-    else $url = "$panel_url/xui/inbound/update/$iid";
+    else $url = "$panel_url/panel/inbound/update/$iid";
     
     $phost = str_ireplace('https://','',str_ireplace('http://','',$panel_url));
     curl_setopt_array($curl, array(
@@ -2956,7 +2956,7 @@ function getJson($server_id){
     }
 
     if($serverType == "sanaei") $url = "$panel_url/panel/inbound/list";
-    else $url = "$panel_url/xui/inbound/list";
+    else $url = "$panel_url/panel/inbound/list";
 
     $phost = str_ireplace('https://','',str_ireplace('http://','',$panel_url));
     curl_setopt_array($curl, array(
@@ -3578,7 +3578,7 @@ function addUser($server_id, $client_id, $protocol, $port, $expiryTime, $remark,
     }
     
     if($serverType == "sanaei") $url = "$panel_url/panel/inbound/add";
-    else $url = "$panel_url/xui/inbound/add";
+    else $url = "$panel_url/panel/inbound/add";
     
     curl_setopt_array($curl, array(
         CURLOPT_URL => $url,
